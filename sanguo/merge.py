@@ -68,7 +68,7 @@ endPos2 = endPos2[::-1]
 endWeapon2 = sorted(endWeapon2, key=lambda x: x['num'])
 endWeapon2 = endWeapon2[::-1]
 
-print(endPos2)
+# print(endPos2)
 
 # fileAllWeapon = open('all_weapon.txt', 'w')
 # fileAllWeapon.write()
