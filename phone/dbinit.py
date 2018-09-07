@@ -6,7 +6,7 @@ db = pymysql.connect("localhost", "test", "123456", "JD_PHONE")
 cursor = db.cursor()
 
 # 使用 execute() 方法执行 SQL，如果表存在则删除
-# cursor.execute("DROP TABLE IF EXISTS COMMENTS")
+cursor.execute("DROP TABLE IF EXISTS cm_iphonex")
 
 # phone:'iphone' #该字段为我创建的
 # id: 11881798320,
@@ -20,11 +20,10 @@ cursor = db.cursor()
 # memery:"64GB"
 # userLevelName: "PLUS会员",
 # 使用预处理语句创建表
-sql = """CREATE TABLE COMMENTS (
-         phone CHAR(20),
-         id INT,
+sql = """CREATE TABLE cm_iphonex (
+         id BIGINT not null primary key,
          guid  CHAR(40),
-         content  CHAR(255),
+         content  TEXT,
          creationTime  CHAR(30),
          referenceName CHAR(255),
          userImageUrl CHAR(255),
@@ -32,7 +31,16 @@ sql = """CREATE TABLE COMMENTS (
          memery CHAR(20),
          userLevelName CHAR(20) )"""
 
-cursor.execute(sql)
+try:
+    # 执行sql语句
+    cursor.execute(sql)
+    # 提交到数据库执行
+    db.commit()
+    print('succ')
+except Exception as e:
+    print('rollback',e)
+    # 如果发生错误则回滚
+    db.rollback()
 
 # 关闭数据库连接
 db.close()
