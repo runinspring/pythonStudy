@@ -5,8 +5,8 @@ db = pymysql.connect("localhost", "test", "123456", "JD_PHONE")
 # 使用 cursor() 方法创建一个游标对象 cursor
 cursor = db.cursor()
 
-# 使用 execute() 方法执行 SQL，如果表存在则删除
-cursor.execute("DROP TABLE IF EXISTS cm_iphonex")
+# 使用 execute() 方法执行 SQL，如果表存在则删除 慎重执行
+# cursor.execute("DROP TABLE IF EXISTS cm_nut_pro2s")
 
 # phone:'iphone' #该字段为我创建的
 # id: 11881798320,
@@ -20,7 +20,7 @@ cursor.execute("DROP TABLE IF EXISTS cm_iphonex")
 # memery:"64GB"
 # userLevelName: "PLUS会员",
 # 使用预处理语句创建表
-sql = """CREATE TABLE cm_iphonex (
+sql = """CREATE TABLE cm_nut_pro2s (
          id BIGINT not null primary key,
          guid  CHAR(40),
          content  TEXT,
