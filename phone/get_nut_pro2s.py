@@ -30,6 +30,7 @@ def setData(datas):
 
     db = pymysql.connect("localhost", "test", "123456", "JD_PHONE")
     cursor = db.cursor()
+    # sql = "INSERT INTO cm_test (id, guid,content,creationTime,referenceName,userImageUrl,nickname,memery,userLevelName) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s) "
     sql = "INSERT INTO cm_nut_pro2s (id, guid,content,creationTime,referenceName,userImageUrl,nickname,memery,userLevelName) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s) "
     sql += "ON DUPLICATE KEY UPDATE userLevelName=Values(userLevelName)"  # 重复的替换
     try:
@@ -56,7 +57,7 @@ idx = -1
 def getURL():
     global idx
 
-    if idx > 101:
+    if idx > 1:
         return
     print('url page:', idx)
 

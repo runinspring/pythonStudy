@@ -30,8 +30,7 @@ def setData(datas):
 
     db = pymysql.connect("localhost", "test", "123456", "JD_PHONE")
     cursor = db.cursor()
-    # sql = "INSERT INTO cm_test (id, guid,content,creationTime,referenceName,userImageUrl,nickname,memery,userLevelName) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s) "
-    sql = "INSERT INTO cm_iphonex (id, guid,content,creationTime,referenceName,userImageUrl,nickname,memery,userLevelName) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s) "
+    sql = "INSERT INTO cm_huawei_p20 (id, guid,content,creationTime,referenceName,userImageUrl,nickname,memery,userLevelName) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s) "
     sql += "ON DUPLICATE KEY UPDATE userLevelName=Values(userLevelName)"  # 重复的替换
     try:
         # 执行sql语句
@@ -51,16 +50,16 @@ def setData(datas):
     getURL()
 
 
-idx = -1
+idx = 2
 
 
 def getURL():
     global idx
     
-    if idx > 1:
+    if idx > 102:
         return
     print('url page:', idx)
-    url = 'https://sclub.jd.com/comment/productPageComments.action?&productId=5089253&score=0&sortType=6&page=%s&pageSize=10&isShadowSku=0&rid=0&fold=1' % idx
+    url = 'https://sclub.jd.com/comment/productPageComments.action?&productId=8758880&score=0&sortType=6&page=%s&pageSize=10&isShadowSku=0&rid=0&fold=1' % idx
     # url = 'https://sclub.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98vv80592&productId=5089253&score=0&sortType=5&page=%s&pageSize=10&isShadowSku=0&rid=0&fold=1' % page
     # json_start = 'fetchJSON_comment98vv80592\('  # json 要过滤的开头文件，这个字符串会变 记得 \( 前面要加转义符
     content = requests.get(url)
